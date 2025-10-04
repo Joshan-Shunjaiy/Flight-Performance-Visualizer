@@ -49,42 +49,48 @@ ThrustRequired = TotalDrag
 ThrustAvailable = np.ones_like(V) * T_max_N
 RateOfClimb = (ThrustAvailable - TotalDrag) * V / W_N
 # Plots
-plt.figure()
-plt.plot(V, Lift, label="Lift")
-plt.axhline(W_N, color='r', linestyle='--', label="Weight")
-plt.xlabel("Speed (m/s)")
-plt.ylabel("Lift (N)")
-plt.title("Lift vs Speed")
-plt.grid(True)
-plt.legend()
+fig, axs = plt.subplots(2, 2, figsize=(12, 10))
 
-plt.figure()
-plt.plot(V, Parasite, label="Parasite Drag")
-plt.plot(V, Induced, label="Induced Drag")
-plt.plot(V, TotalDrag, label="Total Drag")
-plt.xlabel("Speed (m/s)")
-plt.ylabel("Drag (N)")
-plt.title("Drag vs Speed")
-plt.grid(True)
-plt.legend()
+# Lift vs Speed
+axs[0, 0].plot(V, Lift, label="Lift")
+axs[0, 0].axhline(W_N, color='r', linestyle='--', label="Weight")
+axs[0, 0].set_xlabel("Speed (m/s)")
+axs[0, 0].set_ylabel("Lift (N)")
+axs[0, 0].set_title("Lift vs Speed")
+axs[0, 0].grid(True)
+axs[0, 0].legend()
 
-plt.figure()
-plt.plot(V, ThrustRequired, label="Thrust Required")
-plt.plot(V, ThrustAvailable, label="Thrust Available")
-plt.xlabel("Speed (m/s)")
-plt.ylabel("Thrust (N)")
-plt.title("Thrust Required vs Thrust Available")
-plt.grid(True)
-plt.legend()
+# Drag vs Speed
+axs[0, 1].plot(V, Parasite, label="Parasite Drag")
+axs[0, 1].plot(V, Induced, label="Induced Drag")
+axs[0, 1].plot(V, TotalDrag, label="Total Drag")
+axs[0, 1].set_xlabel("Speed (m/s)")
+axs[0, 1].set_ylabel("Drag (N)")
+axs[0, 1].set_title("Drag vs Speed")
+axs[0, 1].grid(True)
+axs[0, 1].legend()
 
-plt.figure()
-plt.plot(V, RateOfClimb, label="Rate of Climb")
-plt.axhline(0, color='r', linestyle='--',label="Speed")
-plt.xlabel("Speed (m/s)")
-plt.ylabel("Rate of Climb (m/s)")
-plt.title("Rate of Climb vs Speed")
-plt.grid(True)
-plt.legend()
+# Thrust Required vs Available
+axs[1, 0].plot(V, ThrustRequired, label="Thrust Required")
+axs[1, 0].plot(V, ThrustAvailable, label="Thrust Available")
+axs[1, 0].set_xlabel("Speed (m/s)")
+axs[1, 0].set_ylabel("Thrust (N)")
+axs[1, 0].set_title("Thrust Required vs Thrust Available")
+axs[1, 0].grid(True)
+axs[1, 0].legend()
+
+# Rate of Climb vs Speed
+axs[1, 1].plot(V, RateOfClimb, label="Rate of Climb")
+axs[1, 1].axhline(0, color='r', linestyle='--', label="Level Flight (RoC = 0)")
+axs[1, 1].set_xlabel("Speed (m/s)")
+axs[1, 1].set_ylabel("Rate of Climb (m/s)")
+axs[1, 1].set_title("Rate of Climb vs Speed")
+axs[1, 1].grid(True)
+axs[1, 1].legend()
+
+plt.tight_layout()
 
 plt.show()
+
+
 
