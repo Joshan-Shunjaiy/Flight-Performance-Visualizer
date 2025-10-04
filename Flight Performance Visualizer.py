@@ -79,7 +79,7 @@ plt.legend()
 
 plt.figure()
 plt.plot(V, RateOfClimb, label="Rate of Climb")
-plt.axhline(0, color='r', linestyle='--')
+plt.axhline(0, color='r', linestyle='--',label="Speed")
 plt.xlabel("Speed (m/s)")
 plt.ylabel("Rate of Climb (m/s)")
 plt.title("Rate of Climb vs Speed")
@@ -87,3 +87,4 @@ plt.grid(True)
 plt.legend()
 
 plt.show()
+
