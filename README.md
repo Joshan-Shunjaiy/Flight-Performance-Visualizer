@@ -13,3 +13,5 @@ It generates performance curves such as Lift vs Speed, Drag breakdown, Thrust Re
   - Rate of Climb vs Speed  
 - Parameterized inputs: weight, wing area, drag coefficients, aspect ratio, thrust available.  
 - Built with Python, Numpy, Matplotlib for numerical computation and visualization.  
+## Example Output
+![Performance Plots](plots.png)
